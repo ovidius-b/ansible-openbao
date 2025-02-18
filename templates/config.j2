@@ -1,0 +1,24 @@
+# Ansible generated
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+# Full configuration options can be found at https://github.com/openbao/openbao/tree/main/website/content/docs/configuration
+
+ui = {% if openbao_enable_ui is sameas true %} true {% else %} false {% endif %}
+
+{% if openbao_api_addr | length %}api_addr = "{{ openbao_api_addr }}" {% endif %}
+
+{% if openbao_cluster_addr | length %}cluster_addr = "{{ openbao_cluster_addr }}" {% endif %}
+
+storage "{{ openbao_storage_type }}" {
+    {% for param, value in openbao_storage_params.items() %}
+    {{ param }} = "{{ value }}"
+    {% endfor %}
+}
+
+{% for listen in openbao_listeners %}
+listener "{{ listen.type }}" {
+    {% for param, value in listen.params.items() %}
+    {{ param }} = "{{ value }}"
+    {% endfor %}
+}
+{% endfor %}

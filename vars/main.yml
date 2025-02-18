@@ -1,0 +1,12 @@
+#SPDX-License-Identifier: MIT-0
+---
+# vars file for ansible-openbao
+
+_openbao_role_supported_distros:
+  - 'Debian'
+  - 'Ubuntu'
+
+_openbao_architecture_options:
+  amd64: amd64
+  x86_64: amd64
+

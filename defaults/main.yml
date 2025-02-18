@@ -1,0 +1,31 @@
+#SPDX-License-Identifier: MIT-0
+---
+# defaults file for ansible-openbao
+
+openbao_version: 2.1.1
+
+openbao_enable_ui: false
+openbao_api_addr: ""
+openbao_cluster_addr: ""
+openbao_storage_type: file
+openbao_storage_params:
+  path: "/opt/openbao/data"
+
+openbao_listeners:
+  - type: tcp
+    params:
+      address: 0.0.0.0:8200
+      cluster_address: 0.0.0.0:8201
+      tls_cert_file: "/opt/openbao/tls/tls.crt"
+      tls_key_file: "/opt/openbao/tls/tls.key"
+  # - type: tcp
+  #   params:
+  #     address: 0.0.0.0:8200
+  #     cluster_address: 0.0.0.0:8201
+  #     tls_disable: true
+  # - type: unix
+  #   params:
+  #     address: "/var/run/openbao.sock"
+  #     socket_mode: "644"
+  #     socket_user: "1000"
+  #     socket_group: "1000"
