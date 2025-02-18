@@ -5,6 +5,11 @@ An ansible role to install and configure openbao. Openbao is an open source solu
 
 For full config description and params, look at https://github.com/openbao/openbao/tree/main/website/content/docs/configuration
 
+Supported OS
+------------
+
+- Debian
+
 Requirements
 ------------
 
