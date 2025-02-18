@@ -1,0 +1,17 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for ansible-openbao
+
+- name: Load OS-specific vars.
+  include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - '{{ansible_os_family}}.yml'
+        - main.yml
+      paths:
+        - 'vars'
+
+- include_tasks: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
+

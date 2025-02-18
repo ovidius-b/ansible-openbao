@@ -1,0 +1,28 @@
+---
+# download deb package
+# https://github.com/openbao/openbao/releases/download/v2.1.1/bao_2.1.1_linux_amd64.deb
+# https://github.com/openbao/openbao/releases/download/v2.2.1/bao_2.2.1_linux_amd64.deb
+
+# install
+# sudo apt-get install ./bao_2.1.1_linux_amd64.deb
+
+# set config
+
+# enable and start service
+
+# - name: Download package
+#   ansible.builtin.get_url:
+#     url: "https://github.com/openbao/openbao/releases/download/v{openbao_version}/bao_{openbao_version}_{ansible_system}_{_openbao_architecture_options[ansible_userspace_architecture]}.{_openbao_pkg_extension}"
+#     dest: /var/tmp/bao_{openbao_version}_{ansible_system}_{_openbao_architecture_options[ansible_userspace_architecture]}.{_openbao_pkg_extension}
+#     mode: '0700'
+
+- name: Install a .deb package from the internet
+  ansible.builtin.apt:
+    deb: "https://github.com/openbao/openbao/releases/download/v{{openbao_version}}/bao_{{openbao_version}}_{{ansible_system | lower}}_{{_openbao_architecture_options[ansible_userspace_architecture]}}.{{_openbao_pkg_extension}}"
+
+- name: Generate openbao config
+  ansible.builtin.template:
+    src: config.j2
+    dest: /etc/openbao/openbao.hcl
+    mode: '0640'
+  notify: restart openbao
