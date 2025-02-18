@@ -1,15 +1,12 @@
 #SPDX-License-Identifier: MIT-0
 galaxy_info:
   author: Ovidiu Bratosin
-  description: Installs and configures openbao, an open source solution to manage, store, and distribute sensitive data including secrets, certificates, and keys.
-  company: your company (optional)
+  description: Installs and configures OpenBao, an open source solution to manage, store, and distribute sensitive data including secrets, certificates, and keys.
+  company: wipsquare
 
   license: MIT
 
   min_ansible_version: "2.1"
-
-  # If this a Container Enabled role, provide the minimum Ansible Container version.
-  # min_ansible_container_version:
 
   galaxy_tags:
     - openbao
